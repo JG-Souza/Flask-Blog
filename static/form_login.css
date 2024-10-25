@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'DynaPuff';
     background-color: #f4f4f4;
     display: flex;
     justify-content: center;
@@ -40,6 +40,7 @@ button {
     color: white;
     border-radius: 4px;
     cursor: pointer;
+    font-family: 'DynaPuff';
 }
 
 button:hover {
@@ -55,6 +56,7 @@ button:hover {
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px; /* Espaço acima do botão */
+    font-family: 'DynaPuff';
 }
 
 .back-button:hover {
