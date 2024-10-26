@@ -4,17 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/sidebar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Poppins:wght@200;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="sidebar">
-        <h2>Menu</h2>
-        <ul>
-            <li><a href="#home">Lista de Usuários</a></li>
-            <li><a href="#servicos">Lista de Alunos</a></li>
-            <li><a href="#sobre">Registros $</a></li>
-            <li><a href="#contato">Histórico de Atividade</a></li>
-            <li><a href="{{ url_for('main.logout') }}">Logout</a></li>
+    <div class="sidebar-container">
+      <nav id="sidebar">
+        <div class="logo-container">
+          <img
+            src="/static/logo.png"
+            alt="logo"
+            id="sidebar-logo"
+          />
+        </div>
+        <ul id="sidebar-itens">
+          <li class="side-item active">
+            <a href="{{ url_for('main.menu') }}">
+              <img src="/static/grupo.svg" alt="Dashboard Icon" class="menu-icon">
+              <p class="item-title">Lista de Usuários</p>
+            </a>
+          </li>
+          <li class="side-item">
+            <a href="{{ url_for('alunos.home') }}">
+              <img src="/static/chapeu.svg" alt="Students Icon" class="menu-icon">
+              <p class="item-title">Lista de Alunos</p>
+            </a>
+          </li>
+          <li class="side-item">
+            <a href="#sobre">
+              <img src="/static/dinheiro.svg" alt="Records Icon" class="menu-icon">
+              <p class="item-title">Registros Financeiros</p>
+            </a>
+          </li>
+          <li class="side-item">
+            <a href="#contato">
+              <img src="/static/papel.svg" alt="History Icon" class="menu-icon">
+              <p class="item-title">Histórico de Atividade</p>
+            </a>
+          </li>
         </ul>
+        <div id="logout-container">
+          <button id="logout-button">
+            <img src="/static/logout.svg" alt="Logout Icon" class="menu-icon">
+            <p class="item-title">Logout</p>
+          </button>
+        </div>
+      </nav>
     </div>
 </body>
 </html>
+
+
+

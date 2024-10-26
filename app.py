@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_login import LoginManager
 import sqlite3 as sq
-from routes import main_blueprint
+from routes import main_blueprint, alunos
 from models import User
 
 app = Flask(__name__)
@@ -16,6 +16,47 @@ with sq.connect('usuarios.db') as conn:
                 email TEXT NOT NULL,
                 senha TEXT NOT NULL
                 
+    )
+    ''')
+
+with sq.connect('alunos.db') as conn:
+    cursor = conn.cursor()
+
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS alunos (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                nome TEXT NOT NULL,
+                data_nascimento DATE NOT NULL,
+                idade INTEGER NOT NULL,
+                endereco TEXT NOT NULL,
+                numero TEXT NOT NULL,
+                complemento TEXT,
+                cep TEXT NOT NULL,
+                bairro TEXT NOT NULL,
+                cidade TEXT NOT NULL,
+                tel_celular TEXT NOT NULL,
+                tel_responsavel TEXT NOT NULL,
+                email TEXT NOT NULL UNIQUE,
+                profissao TEXT NOT NULL,
+                cpf TEXT NOT NULL UNIQUE,
+                inicio DATE NOT NULL,
+                instagram TEXT,
+                tabagista BOOLEAN DEFAULT 0,
+                hipertenso BOOLEAN DEFAULT 0,
+                diabetico BOOLEAN DEFAULT 0,
+                medicacao BOOLEAN DEFAULT 0,
+                medicacao_detalhes TEXT,
+                cirurgia BOOLEAN DEFAULT 0,
+                cirurgia_detalhes TEXT,
+                atividade_fisica BOOLEAN DEFAULT 0,
+                atividade_fisica_detalhes TEXT,
+                dor BOOLEAN DEFAULT 0,
+                dor_detalhes TEXT,
+                info_studio TEXT,
+                pilates BOOLEAN DEFAULT 0,
+                patricia TEXT,
+                objetivo TEXT,
+                obs_fisio TEXT
     )
     ''')
 
@@ -35,6 +76,7 @@ def load_user(user_id):
 
 # Registrar Blueprints
 app.register_blueprint(main_blueprint)
+app.register_blueprint(alunos, url_prefix='/alunos')
 
 if __name__ == '__main__':
     app.run(debug=True)

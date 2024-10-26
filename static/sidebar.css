@@ -5,36 +5,108 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'DynaPuff', sans-serif;
     display: flex;
+    background-color: var(--main-color);
 }
 
-.sidebar {
-    width: 250px;
-    background-color: #34495e;
-    color: white;
+:root {
+    --main-color: #67C6D0;
+    --sec-color: #00BFFF;
+    --bg-color: #191970; /* Pode ser alterado para uma cor sólida */
+    --text-color: #8A2BE2;
+    --nt-color: #F5F5F5;
+}
+
+.sidebar-container {
+    width: 30%;
+    height: 80vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 450px;
+}
+
+#sidebar {
+    width: 25vw; /* Largura da sidebar */
+    max-width: 400px;
+    background-color: var(--bg-color); /* Cor sólida */
+    color: var(--nt-color);
     padding: 20px;
-    height: 100vh; /* Altura total da tela */
+    height: 80vh;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 30px;
 }
 
-.sidebar h2 {
-    margin-bottom: 20px;
+#sidebar-logo {
+    max-width: 100%; /* Ajusta a largura da imagem para não ultrapassar a sidebar */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-bottom: 20px; /* Espaço abaixo da imagem */
 }
 
-.sidebar ul {
+#sidebar-itens {
     list-style-type: none;
+    width: 100%;
+    padding: 0; /* Remove o padding padrão */
 }
 
-.sidebar ul li {
-    margin: 15px 0;
+.side-item {
+    margin: 20px 0; /* Menos espaço entre os itens */
 }
 
-.sidebar ul li a {
-    color: white;
+.side-item a {
+    color: #ecf0f1; /* Cor do texto */
     text-decoration: none;
-    transition: color 0.3s;
+    padding: 12px 20px; /* Aumenta o padding para melhorar a área clicável */
+    border-radius: 5px;
+    width: 100%;
+    display: flex; /* Permite alinhar ícones e texto */
+    align-items: center; /* Alinha ícones e texto verticalmente */
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.sidebar ul li a:hover {
-    color: #1abc9c;
+.side-item a:hover {
+    background-color: var(--sec-color); /* Cor ao passar o mouse */
+    color: #ffffff; /* Cor do texto ao passar o mouse */
 }
+
+.side-item a:active {
+    background-color: #16a085; /* Cor ao ativar */
+    color: #ffffff;
+}
+
+/* Ícone do menu */
+.menu-icon {
+    width: 24px; /* Largura do ícone */
+    height: 24px; /* Altura do ícone */
+    margin-right: 10px; /* Espaço entre ícone e texto */
+}
+
+#logout-container {
+    margin-top: auto; /* Para empurrar o logout para o fundo */
+    width: 100%;
+}
+
+#logout-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color); /* Mesma cor da sidebar */
+    color: var(--nt-color);
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px; /* Padding para o botão */
+    width: 100%; /* Largura total */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#logout-button:hover {
+    background-color: var(--sec-color); /* Cor ao passar o mouse no botão */
+    color: #ffffff; /* Cor do texto ao passar o mouse no botão */
+}
+
+

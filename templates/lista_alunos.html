@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela de Alunos</title>
+    <link rel="stylesheet" href="/static/lista_alunos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Poppins:wght@200;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% include 'sidebar.html' %}
+    <div class="card">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Ver</th>
+                        <th>Editar</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Exemplo de item da tabela -->
+                    {% for aluno in alunos %}
+                    <tr>
+                        <td>{{ aluno.id }}</td>
+                        <td>{{ aluno.nome }}</td>
+                        <td>{{ aluno.email }}</td>
+                        <td><a class="btn-view" href="">View</a></td>
+                        <td><a class="btn-edit" href="">Edit</a></td>
+                        <td>
+                            <a class="btn-delete" href="">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="button-group">
+            <a class="btn-voltar" href="{{ url_for('main.menu') }}">Voltar</a>
+
+        <!-- Modal de criação de usuário -->
+        <a class="btn-criar-aluno" href="#criarAluno">Criar</a>
+        <div id="criarAluno" class="modal">
+            <div class="modal-dialog">
+                <a href="#" class="close">&times;</a>
+                <h2>Cadastro</h2>
+                <form action="{{ url_for('alunos.criar_aluno') }}" method="POST">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                
+                    <label for="data_nascimento">Data de Nascimento:</label>
+                    <input type="date" id="data_nascimento" name="data_nascimento" required>
+                
+                    <label for="idade">Idade:</label>
+                    <input type="number" id="idade" name="idade" required>
+                
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" id="endereco" name="endereco" required>
+                
+                    <label for="numero">Número:</label>
+                    <input type="text" id="numero" name="numero" required>
+                
+                    <label for="complemento">Complemento (opcional):</label>
+                    <input type="text" id="complemento" name="complemento">
+                
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" required>
+                
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro" required>
+                
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" required>
+                
+                    <label for="tel_celular">Tel. Celular:</label>
+                    <input type="tel" id="tel_celular" name="tel_celular" required>
+                
+                    <label for="tel_responsavel">Tel. Responsável:</label>
+                    <input type="tel" id="tel_responsavel" name="tel_responsavel" required>
+                
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                
+                    <label for="profissao">Profissão:</label>
+                    <input type="text" id="profissao" name="profissao" required>
+                
+                    <label for="cpf">CPF:</label>
+                    <input type="text" id="cpf" name="cpf" required>
+                
+                    <label for="inicio">Data de Início:</label>
+                    <input type="date" id="inicio" name="inicio" required>
+                
+                    <label for="instagram">Instagram:</label>
+                    <input type="text" id="instagram" name="instagram">
+                
+                    <fieldset>
+                        <legend>Condições de Saúde</legend>
+                        <label for="tabagista">Tabagista:</label>
+                        <input type="checkbox" id="tabagista" name="tabagista">
+                
+                        <label for="hipertenso">Hipertenso:</label>
+                        <input type="checkbox" id="hipertenso" name="hipertenso">
+                
+                        <label for="diabetico">Diabético:</label>
+                        <input type="checkbox" id="diabetico" name="diabetico">
+                
+                        <label for="medicacao">Uso de Medicação:</label>
+                        <input type="checkbox" id="medicacao" name="medicacao">
+                
+                        <label for="medicacao_detalhes">Detalhes da Medicação:</label>
+                        <input type="text" id="medicacao_detalhes" name="medicacao_detalhes">
+                
+                        <label for="cirurgia">Já realizou Cirurgia?</label>
+                        <input type="checkbox" id="cirurgia" name="cirurgia">
+                
+                        <label for="cirurgia_detalhes">Detalhes da Cirurgia:</label>
+                        <input type="text" id="cirurgia_detalhes" name="cirurgia_detalhes">
+                
+                        <label for="atividade_fisica">Pratica Atividade Física?</label>
+                        <input type="checkbox" id="atividade_fisica" name="atividade_fisica">
+                
+                        <label for="atividade_fisica_detalhes">Detalhes da Atividade Física:</label>
+                        <input type="text" id="atividade_fisica_detalhes" name="atividade_fisica_detalhes">
+                
+                        <label for="dor">Sente Dor?</label>
+                        <input type="checkbox" id="dor" name="dor">
+                
+                        <label for="dor_detalhes">Detalhes sobre a Dor:</label>
+                        <input type="text" id="dor_detalhes" name="dor_detalhes">
+                
+                        <label for="info_studio">Informações sobre o Estúdio:</label>
+                        <input type="text" id="info_studio" name="info_studio">
+                
+                        <label for="pilates">Faz Pilates?</label>
+                        <input type="checkbox" id="pilates" name="pilates">
+                
+                        <label for="patricia">Patricia:</label>
+                        <input type="text" id="patricia" name="patricia">
+                
+                        <label for="objetivo">Objetivo:</label>
+                        <input type="text" id="objetivo" name="objetivo">
+                
+                        <label for="obs_fisio">Observações do Fisioterapeuta:</label>
+                        <input type="text" id="obs_fisio" name="obs_fisio">
+                    </fieldset>
+                
+                    <button type="submit">Cadastrar</button>
+                </form>
+                
+                <a href="#" class="btn-close">Fechar</a>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+</body>
+</html>
